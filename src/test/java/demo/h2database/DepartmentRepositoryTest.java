@@ -83,7 +83,7 @@ class DepartmentRepositoryTest {
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(10);
-        assertEquals("ACCOUNTING", found.getName());
+        assertEquals("ACCOUNTINGX", found.getName());
     }
 
     @Test
@@ -93,7 +93,7 @@ class DepartmentRepositoryTest {
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(20);
-        assertEquals("RESEARCH", found.getName());
+        assertEquals("RESEARCHX", found.getName());
     }
 
     @Disabled
