@@ -86,6 +86,16 @@ class DepartmentRepositoryTest {
         assertEquals("ACCOUNTINGZ", found.getName());
     }
 
+    @Test
+    void getDepartment20() throws SQLException {
+        // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
+        // in-memory named
+        // https://www.h2database.com/html/features.html
+        // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
+        Department found = repository.getDepartment(10);
+        assertEquals("RESEARCHX", found.getName());
+    }
+
     @Disabled
     @Test
     void getDepartment60() throws SQLException {

@@ -1,4 +1,4 @@
-name: Qodana
+name: h2 database
 on:
   workflow_dispatch:
   pull_request:
