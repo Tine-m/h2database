@@ -27,7 +27,7 @@ public class DepartmentRepository {
             ResultSet rs = ps.executeQuery();
             Department found = null;
             if (rs.next()) {
-                System.out.print(rs.getString("DNAME"));
+                System.out.println("uden singleton " + connection);
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
                 String location = rs.getString(3);

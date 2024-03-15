@@ -10,9 +10,9 @@ import java.sql.SQLException;
 @Controller
 public class DepartmentController {
 
-    private DepartmentRepository repository;
+    private DepartmentRepository2 repository;
 
-    public DepartmentController(DepartmentRepository repository) {
+    public DepartmentController(DepartmentRepository2 repository) {
         this.repository = repository;
     }
 

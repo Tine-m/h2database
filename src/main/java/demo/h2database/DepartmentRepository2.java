@@ -18,36 +18,14 @@ public class DepartmentRepository2 {
     private String pwd;
 
     public Department getDepartment(int deptno) throws SQLException {
-        try (
-                Connection connection =
-                        DriverManager.getConnection(db_url, uid, pwd)) {
-            String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
-            PreparedStatement ps = connection.prepareStatement(SQL);
+        Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
+        String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
+        try (PreparedStatement ps = connection.prepareStatement(SQL)) {
             ps.setInt(1, deptno);
             ResultSet rs = ps.executeQuery();
             Department found = null;
             if (rs.next()) {
-                System.out.print(rs.getString("DNAME"));
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String location = rs.getString(3);
-                found = new Department(id, name, location);
-            }
-            return found;
-        }
-    }
-
-    public Department getDepartmentSingleTon(int deptno) throws SQLException {
-        try (
-                Connection connection =
-                        DriverManager.getConnection(db_url, uid, pwd)) {
-            String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
-            PreparedStatement ps = connection.prepareStatement(SQL);
-            ps.setInt(1, deptno);
-            ResultSet rs = ps.executeQuery();
-            Department found = null;
-            if (rs.next()) {
-                System.out.print(rs.getString("DNAME"));
+                System.out.println("hej " + connection);
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
                 String location = rs.getString(3);
