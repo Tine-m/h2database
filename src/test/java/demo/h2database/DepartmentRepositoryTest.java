@@ -54,7 +54,7 @@ class DepartmentRepositoryTest {
 
             // STEP 3: Execute a query
             //stmt = conn.createStatement();
-            String sql2 = "INSERT INTO DEPT VALUES (10,'ACCOUNTINGZ','NEW YORK')";
+            String sql2 = "INSERT INTO DEPT VALUES (10,'ACCOUNTINGX','NEW YORK')";
             stmt.executeUpdate(sql2);
 
             sql2 = "INSERT INTO DEPT VALUES (20,'RESEARCHX','DALLAS')";
