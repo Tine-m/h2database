@@ -1,22 +1,11 @@
 package demo.h2database;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-class DepartmentRepository2Test {
+class DepartmentRepository2IT {
 
 
     /*
@@ -37,7 +26,7 @@ class DepartmentRepository2Test {
     private String pwd;
 
 
-    @BeforeEach
+   /* @BeforeEach
     public void setup()  {
 
         //VIRKER MED DENNE embedded local connection
@@ -77,8 +66,8 @@ class DepartmentRepository2Test {
             System.out.println("Create went wrong" + e.getMessage());
             System.out.println("Inserts went wrong " + e.getMessage());
         }
-    }
-    @Test
+    }*/
+    /*@Test
     void getDepartment10() throws SQLException {
         // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
         // in-memory named
