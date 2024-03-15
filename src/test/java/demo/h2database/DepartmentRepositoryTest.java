@@ -11,31 +11,22 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class DepartmentRepositoryTest {
 
-    /*
-    application.properties i src/test/resources overrider
-    automatisk den i src/main/resources
-    */
-
     @Autowired
     DepartmentRepository repository;
 
     @Test
-    void getDepartment10() throws SQLException {
+    void getAccountingDepartment() throws SQLException {
         Department found = repository.getDepartment(10);
         assertEquals("ACCOUNTING", found.getName());
     }
 
     @Test
-    void getDepartment20() throws SQLException {
-        Department found = repository.getDepartment(20);
-        assertEquals("RESEARCH", found.getName());
+    void deleteDepartment40() throws IncorrectDepartmentIDException {
+        repository.deleteDepartment(40);
     }
 
     @Test
-    void getDepartment50() throws SQLException {
-        //Findes kun i dataset for embedded database
-        // husk @Disabled virker ikke med H2 db
-        Department found = repository.getDepartment(50);
-        assertEquals("A", found.getName());
+    void deleteNotExistingDepartment() {
+        assertThrows(IncorrectDepartmentIDException.class, () -> repository.deleteDepartment(50));
     }
 }

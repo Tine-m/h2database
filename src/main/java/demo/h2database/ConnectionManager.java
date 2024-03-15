@@ -8,7 +8,6 @@ public class ConnectionManager {
     private static Connection conn;
 
     private ConnectionManager() {
-        // default contrutor gøres private
     }
 
     public static Connection getConnection(String db_url, String uid, String pwd) {

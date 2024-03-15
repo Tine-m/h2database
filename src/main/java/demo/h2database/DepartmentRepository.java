@@ -37,23 +37,19 @@ public class DepartmentRepository {
         }
     }
 
-    public Department getDepartmentSingleTon(int deptno) throws SQLException {
+    public void deleteDepartment(int deptno) throws IncorrectDepartmentIDException {
         try (
                 Connection connection =
                         DriverManager.getConnection(db_url, uid, pwd)) {
-            String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
+            String SQL = "DELETE FROM DEPT WHERE DEPTNO = ?";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, deptno);
-            ResultSet rs = ps.executeQuery();
-            Department found = null;
-            if (rs.next()) {
-                System.out.print(rs.getString("DNAME"));
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String location = rs.getString(3);
-                found = new Department(id, name, location);
+            int rows= ps.executeUpdate();
+            if (rows < 1) {
+                throw new IncorrectDepartmentIDException();
             }
-            return found;
+           } catch (SQLException e) {
+            throw new IncorrectDepartmentIDException();
         }
     }
 }
