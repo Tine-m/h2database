@@ -1,5 +1,7 @@
 package demo.h2database;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-class DepartmentRepositoryTest {
+class DepartmentRepository2Test {
 
 
     /*
@@ -34,7 +36,7 @@ class DepartmentRepositoryTest {
     @Value("${spring.datasource.password}")
     private String pwd;
 
-/*
+
     @BeforeEach
     public void setup()  {
 
@@ -44,7 +46,7 @@ class DepartmentRepositoryTest {
                 Connection conn =
                         DriverManager.getConnection(db_url, uid, pwd)) {
             Statement stmt = conn.createStatement();
-           String sql = "DROP TABLE if exists DEPT; CREATE TABLE DEPT " +
+            String sql = "DROP TABLE if exists DEPT; CREATE TABLE DEPT " +
                     "(deptno INTEGER, " +
                     " dname VARCHAR(30), " +
                     " loc VARCHAR(30), " +
@@ -76,8 +78,6 @@ class DepartmentRepositoryTest {
             System.out.println("Inserts went wrong " + e.getMessage());
         }
     }
-    */
-
     @Test
     void getDepartment10() throws SQLException {
         // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
@@ -85,7 +85,7 @@ class DepartmentRepositoryTest {
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(10);
-        assertEquals("ACCOUNTING", found.getName());
+        assertEquals("ACCOUNTINGX", found.getName());
     }
 
     @Test
@@ -95,7 +95,7 @@ class DepartmentRepositoryTest {
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(20);
-        assertEquals("RESEARCH", found.getName());
+        assertEquals("RESEARCHX", found.getName());
     }
 
     @Disabled
