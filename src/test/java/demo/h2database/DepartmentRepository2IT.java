@@ -7,14 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class DepartmentRepository2IT {
 
-
-    /*
-    application.properties i src/test/resources overrider
-    automatisk den i src/main/resources
-     */
     @Autowired
     DepartmentRepository repository;
-
+/*
 
     @Value("${spring.datasource.url}")
     private String db_url;
@@ -26,11 +21,11 @@ class DepartmentRepository2IT {
     private String pwd;
 
 
-   /* @BeforeEach
+    @BeforeEach
     public void setup()  {
 
         //VIRKER MED DENNE embedded local connection
-        // #spring.datasource.url=jdbc:h2:~/test
+        // #spring.datasource.url=jdbc:h2:./test
         try (
                 Connection conn =
                         DriverManager.getConnection(db_url, uid, pwd)) {
