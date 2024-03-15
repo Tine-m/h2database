@@ -94,7 +94,7 @@ class DepartmentRepositoryTest {
         assertEquals("RESEARCH", found.getName());
     }
 
-    @Disabled
+ /* fejler på @Disabled
     @Test
     void getDepartment60() throws SQLException {
         // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
@@ -103,5 +103,5 @@ class DepartmentRepositoryTest {
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(60);
         assertEquals("HJEMME", found.getName());
-    }
+    } */
 }
