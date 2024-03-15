@@ -56,19 +56,19 @@ class DepartmentRepository2Test {
 
             // STEP 3: Execute a query
             //stmt = conn.createStatement();
-            String sql2 = "INSERT INTO DEPT VALUES (10,'ACCOUNTINGX','NEW YORK')";
+            String sql2 = "INSERT INTO DEPT VALUES (10,'ACCOUNTING2','NEW YORK')";
             stmt.executeUpdate(sql2);
 
-            sql2 = "INSERT INTO DEPT VALUES (20,'RESEARCHX','DALLAS')";
+            sql2 = "INSERT INTO DEPT VALUES (20,'RESEARCH2','DALLAS')";
             stmt.executeUpdate(sql2);
 
-            sql2 = "INSERT INTO DEPT VALUES (30,'SALESX','CHICAGO')";
+            sql2 = "INSERT INTO DEPT VALUES (30,'SALES2','CHICAGO')";
             stmt.executeUpdate(sql2);
 
-            sql2 = "INSERT INTO DEPT VALUES(40,'OPERATIONSX','BOSTON')";
+            sql2 = "INSERT INTO DEPT VALUES(40,'OPERATIONS2','BOSTON')";
             stmt.executeUpdate(sql2);
 
-            sql2 = "INSERT INTO DEPT VALUES(50,'LANGS HEGNET','LYNGBY')";
+            sql2 = "INSERT INTO DEPT VALUES(50,'HJEMME','LYNGBY')";
             int rows = stmt.executeUpdate(sql2);
 
             System.out.println("Result "+ rows);
@@ -82,10 +82,11 @@ class DepartmentRepository2Test {
     void getDepartment10() throws SQLException {
         // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
         // in-memory named
+        // i roden af projekt *.db
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(10);
-        assertEquals("ACCOUNTINGX", found.getName());
+        assertEquals("ACCOUNTING2", found.getName());
     }
 
     @Test
@@ -95,17 +96,16 @@ class DepartmentRepository2Test {
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
         Department found = repository.getDepartment(20);
-        assertEquals("RESEARCHX", found.getName());
+        assertEquals("RESEARCH2", found.getName());
     }
 
-    @Disabled
     @Test
-    void getDepartment60() throws SQLException {
+    void getDepartment50() throws SQLException {
         // data hentes nu pga. ændring i proerty fil i c:users/tima *.sql
         // in-memory named
         // https://www.h2database.com/html/features.html
         // spring.datasource.url=jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'\\;runscript from '~/data.sql'
-        Department found = repository.getDepartment(60);
+        Department found = repository.getDepartment(50);
         assertEquals("HJEMME", found.getName());
     }
 }
