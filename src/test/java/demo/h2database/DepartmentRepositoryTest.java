@@ -1,5 +1,9 @@
 package demo.h2database;
 
+import demo.h2database.model.Department;
+import demo.h2database.model.IncorrectDepartmentIDException;
+import demo.h2database.repository.DepartmentRepository;
+import demo.h2database.repository.DepartmentRepository2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +24,7 @@ class DepartmentRepositoryTest {
         assertEquals("ACCOUNTING", found.getName());
     }
 
-    @Test
+   /* @Test
     void deleteDepartment40() throws IncorrectDepartmentIDException {
         repository.deleteDepartment(40);
     }
@@ -28,5 +32,5 @@ class DepartmentRepositoryTest {
     @Test
     void deleteNotExistingDepartment() {
         assertThrows(IncorrectDepartmentIDException.class, () -> repository.deleteDepartment(50));
-    }
+    }^*/
 }

@@ -1,4 +1,4 @@
-package demo.h2database;
+package demo.h2database.repository.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
