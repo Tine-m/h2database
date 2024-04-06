@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles({"test"})
-class DepartmentRepositoryH2Test {
+@ActiveProfiles({"h2"})
+class DepartmentRepositoryTest {
 
     @Autowired
     DepartmentRepository repository;

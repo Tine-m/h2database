@@ -23,7 +23,6 @@ public class DepartmentRepositoryUdenSingleton {
         try (
                 Connection connection =
                         DriverManager.getConnection(db_url, uid, pwd)) {
-            System.out.println("uden singleton " + connection);
             String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, deptno);

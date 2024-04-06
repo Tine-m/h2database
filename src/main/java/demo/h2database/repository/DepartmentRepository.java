@@ -22,7 +22,6 @@ public class DepartmentRepository {
 
     public Department getDepartment(int deptno) throws SQLException {
         Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
-        System.out.println("Med singleton " + connection);
         String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
         try (PreparedStatement ps = connection.prepareStatement(SQL)) {
             ps.setInt(1, deptno);
