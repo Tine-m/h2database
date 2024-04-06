@@ -1,4 +1,4 @@
-Insert into DEPT (DEPTNO,DNAME,LOC) values (10,'ACCOUNTINGX','NEW YORK');
-Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'RESEARCHX','DALLAS');
-Insert into DEPT (DEPTNO,DNAME,LOC) values (30,'SALESX','CHICAGO');
-Insert into DEPT (DEPTNO,DNAME,LOC) values (40,'OPERATIONSX','BOSTON');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (10,'ACCOUNTING','NEW YORK');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'RESEARCH','DALLAS');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (30,'SALES','CHICAGO');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (40,'OPERATIONS','BOSTON');

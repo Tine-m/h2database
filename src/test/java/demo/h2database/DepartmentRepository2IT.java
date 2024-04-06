@@ -1,6 +1,6 @@
 package demo.h2database;
 
-import demo.h2database.repository.DepartmentRepository;
+import demo.h2database.repository.DepartmentRepositoryUdenSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class DepartmentRepository2IT {
 
     @Autowired
-    DepartmentRepository repository;
+    DepartmentRepositoryUdenSingleton repository;
 /*
 
     @Value("${spring.datasource.url}")

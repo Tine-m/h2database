@@ -3,34 +3,42 @@ package demo.h2database;
 import demo.h2database.model.Department;
 import demo.h2database.model.IncorrectDepartmentIDException;
 import demo.h2database.repository.DepartmentRepository;
-import demo.h2database.repository.DepartmentRepository2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ActiveProfiles({"test"})
 class DepartmentRepositoryTest {
 
     @Autowired
     DepartmentRepository repository;
 
     @Test
-    void getAccountingDepartment() throws SQLException {
+    void findAccountingDepartment() throws SQLException {
         Department found = repository.getDepartment(10);
-        assertEquals("ACCOUNTING", found.getName());
+        assertEquals("ACCOUNTING_H2", found.getName());
     }
 
-   /* @Test
+   @Test
     void deleteDepartment40() throws IncorrectDepartmentIDException {
         repository.deleteDepartment(40);
     }
 
     @Test
+    void findDepartment40() throws IncorrectDepartmentIDException, SQLException {
+        Department found = repository.getDepartment(40);
+        assertNotNull(found);
+
+    }
+
+    @Test
     void deleteNotExistingDepartment() {
         assertThrows(IncorrectDepartmentIDException.class, () -> repository.deleteDepartment(50));
-    }^*/
+    }
 }

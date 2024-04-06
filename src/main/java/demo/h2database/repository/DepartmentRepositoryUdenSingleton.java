@@ -1,7 +1,6 @@
 package demo.h2database.repository;
 
 import demo.h2database.model.IncorrectDepartmentIDException;
-import demo.h2database.repository.util.ConnectionManager;
 import demo.h2database.model.Department;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 
 @Repository
-public class DepartmentRepository {
+public class DepartmentRepositoryUdenSingleton {
 
     @Value("${spring.datasource.url}")
     private String db_url;
@@ -21,10 +20,12 @@ public class DepartmentRepository {
     private String pwd;
 
     public Department getDepartment(int deptno) throws SQLException {
-        Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
-        System.out.println("Med singleton " + connection);
-        String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
-        try (PreparedStatement ps = connection.prepareStatement(SQL)) {
+        try (
+                Connection connection =
+                        DriverManager.getConnection(db_url, uid, pwd)) {
+            System.out.println("uden singleton " + connection);
+            String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, deptno);
             ResultSet rs = ps.executeQuery();
             Department found = null;
@@ -39,9 +40,11 @@ public class DepartmentRepository {
     }
 
     public void deleteDepartment(int deptno) throws IncorrectDepartmentIDException {
-        Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
-        String SQL = "DELETE FROM DEPT WHERE DEPTNO = ?";
-        try (PreparedStatement ps = connection.prepareStatement(SQL)) {
+        try (
+                Connection connection =
+                        DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "DELETE FROM DEPT WHERE DEPTNO = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, deptno);
             int rows = ps.executeUpdate();
             if (rows < 1) {
@@ -52,4 +55,3 @@ public class DepartmentRepository {
         }
     }
 }
-

@@ -2,7 +2,7 @@ package demo.h2database.controller;
 
 import demo.h2database.model.Department;
 import demo.h2database.repository.DepartmentRepository;
-import demo.h2database.repository.DepartmentRepository2;
+import demo.h2database.repository.DepartmentRepositoryUdenSingleton;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,6 @@ public class DepartmentController {
     }
 
     @GetMapping("")
-    //@ResponseBody
     public String findDepartmentById(Model model) throws SQLException {
         Department found = repository.getDepartment(20);
         model.addAttribute("dept", found);
