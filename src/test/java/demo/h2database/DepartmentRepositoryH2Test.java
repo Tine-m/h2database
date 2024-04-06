@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles({"test"})
-class DepartmentRepositoryTest {
+class DepartmentRepositoryH2Test {
 
     @Autowired
     DepartmentRepository repository;
