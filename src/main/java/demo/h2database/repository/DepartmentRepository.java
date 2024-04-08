@@ -96,7 +96,7 @@ public class DepartmentRepository {
         connection.setAutoCommit(false);
         String SQL = "UPDATE DEPT SET LOC = ?";
         try (PreparedStatement ps = connection.prepareStatement(SQL)) {
-                ps.setString(1, location);
+            ps.setString(1, location);
             int rows = ps.executeUpdate();
             allGood = rows == count;
             if (!allGood) {
@@ -107,6 +107,26 @@ public class DepartmentRepository {
             connection.rollback();
         }
         return allGood;
+    }
+
+    public Department createDepartment(Department dept) throws SQLException {
+        Connection connection = ConnectionManager.getConnection(db_url, uid, pwd);
+        String SQL = "insert into DEPT (DNAME, LOC) " +
+                "values(?, ?)";
+        try (PreparedStatement ps = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, dept.getName());
+            ps.setString(2, dept.getLoc());
+            int rows = ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int deptNo = rs.getInt(1);
+                dept.setDeptno(deptNo);
+                return dept;
+            }
+            else {
+                throw new SQLException("Department not created");
+            }
+        }
     }
 }
 
