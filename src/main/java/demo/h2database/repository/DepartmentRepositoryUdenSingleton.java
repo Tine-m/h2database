@@ -22,7 +22,10 @@ public class DepartmentRepositoryUdenSingleton {
     public Department getDepartment(int deptno) throws SQLException {
         try (
                 Connection connection =
-                        DriverManager.getConnection(db_url, uid, pwd)) {
+                        DriverManager.getConnection(db_url, uid, pwd))
+        {
+            System.out.println("Ikke singleton " + connection);
+
             String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, deptno);

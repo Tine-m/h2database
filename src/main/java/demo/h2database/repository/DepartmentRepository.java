@@ -24,6 +24,8 @@ public class DepartmentRepository {
 
     public Department getDepartment(int deptno) throws SQLException {
         Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
+        System.out.println("Singleton " + connection);
+
         String SQL = "SELECT * FROM DEPT WHERE DEPTNO = ?";
         try (PreparedStatement ps = connection.prepareStatement(SQL)) {
             ps.setInt(1, deptno);
@@ -56,7 +58,6 @@ public class DepartmentRepository {
     public List<Department> findAllDepartments() throws SQLException {
         ArrayList<Department> departments = new ArrayList<>();
         Connection connection = ConnectionManager.getConnection(db_url, uid, pwd); // singleton
-
         String SQL = "SELECT * FROM DEPT";
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(SQL);
@@ -68,6 +69,7 @@ public class DepartmentRepository {
                 tmp = new Department(id, name, location);
                 departments.add(tmp);
             }
+
             return departments;
         }
     }
@@ -96,7 +98,7 @@ public class DepartmentRepository {
         try (PreparedStatement ps = connection.prepareStatement(SQL)) {
                 ps.setString(1, location);
             int rows = ps.executeUpdate();
-            allGood = rows <= count;
+            allGood = rows == count;
             if (!allGood) {
                 throw new SQLException("Business Transaction aborted");
             }

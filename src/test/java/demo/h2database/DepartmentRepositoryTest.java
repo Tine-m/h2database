@@ -3,6 +3,7 @@ package demo.h2database;
 import demo.h2database.model.Department;
 import demo.h2database.model.IncorrectDepartmentIDException;
 import demo.h2database.repository.DepartmentRepository;
+import demo.h2database.repository.DepartmentRepositoryUdenSingleton;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,11 +12,18 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("h2")
+@ActiveProfiles("mysql")
 class DepartmentRepositoryTest {
 
     @Autowired
     DepartmentRepository repository;
+
+    /*@Test
+    void testSingletonPerformance() throws SQLException {
+        for (int i = 0; i < 1000; i++) {
+            repository.getDepartment(10);
+        }
+    }*/
 
     @Test
     void findAccountingDepartment() throws SQLException {
@@ -36,7 +44,7 @@ class DepartmentRepositoryTest {
 
     /*@Test
     void moveAllDepartmentsToOregon() throws SQLException {
-        boolean status = repository.moveAllDepartmentsToSameLocation("Boston");
+        boolean status = repository.moveAllDepartmentsToSameLocation("Oregon");
         assertTrue(status);
     }*/
 
