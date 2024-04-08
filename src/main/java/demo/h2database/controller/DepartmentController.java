@@ -12,9 +12,9 @@ import java.sql.SQLException;
 @Controller
 public class DepartmentController {
 
-    private DepartmentRepositoryUdenSingleton repository;
+    private DepartmentRepository repository;
 
-    public DepartmentController(DepartmentRepositoryUdenSingleton repository) {
+    public DepartmentController(DepartmentRepository repository) {
         this.repository = repository;
     }
 
