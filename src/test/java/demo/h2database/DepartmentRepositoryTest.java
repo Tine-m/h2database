@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles({"h2"})
+@ActiveProfiles("mysql")
 class DepartmentRepositoryTest {
 
     @Autowired
@@ -22,7 +20,7 @@ class DepartmentRepositoryTest {
     @Test
     void findAccountingDepartment() throws SQLException {
         Department found = repository.getDepartment(10);
-        assertEquals("ACCOUNTING_H2", found.getName());
+        assertEquals("ACCOUNTING", found.getName());
     }
 
    @Test
@@ -31,11 +29,16 @@ class DepartmentRepositoryTest {
     }
 
     @Test
-    void findDepartment40() throws IncorrectDepartmentIDException, SQLException {
+    void findDepartment40() throws SQLException {
         Department found = repository.getDepartment(40);
         assertNotNull(found);
-
     }
+
+    /*@Test
+    void moveAllDepartmentsToOregon() throws SQLException {
+        boolean status = repository.moveAllDepartmentsToSameLocation("Boston");
+        assertTrue(status);
+    }*/
 
     @Test
     void deleteNotExistingDepartment() {
