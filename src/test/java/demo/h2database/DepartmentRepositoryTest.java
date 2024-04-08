@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("mysql")
+@ActiveProfiles("h2")
 class DepartmentRepositoryTest {
 
     @Autowired
