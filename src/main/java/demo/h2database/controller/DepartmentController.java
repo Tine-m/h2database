@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class DepartmentController {
 
     private DepartmentRepositoryUdenSingleton repository;
+    int x = 0;
 
     public DepartmentController(DepartmentRepositoryUdenSingleton repository) {
         this.repository = repository;
